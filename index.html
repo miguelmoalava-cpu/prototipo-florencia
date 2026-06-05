@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Florencia, tienda online de accesorios y joyería de moda en Cuenca, Ecuador."
+    />
+    <title>Florencia | Accesorios y joyería</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header principal -->
+    <header class="site-header">
+      <div class="header-inner">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+          <img src="assets/logo.png" alt="Logo Florencia" />
+          <span>Florencia</span>
+        </a>
+
+        <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+          <a href="#inicio">Inicio</a>
+          <a href="#catalogo" data-category-link="Aretes">Aretes</a>
+          <a href="#catalogo" data-category-link="Collares">Collares</a>
+          <a href="#catalogo" data-category-link="Pulseras">Pulseras</a>
+          <a href="#catalogo" data-category-link="Anillos">Anillos</a>
+          <a href="#catalogo" data-category-link="Sets">Sets</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <button class="cart-open" id="cartOpen" type="button" aria-label="Abrir carrito">
+          <span class="cart-icon">□</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero principal -->
+      <section class="hero" id="inicio">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <img class="hero-logo" src="assets/logo.png" alt="Florencia" />
+            <p class="eyebrow">Boutique de accesorios · Cuenca, Ecuador</p>
+            <h1>CADA ACCESORIO, UNA HISTORIA</h1>
+            <p>
+              Accesorios de moda cuidadosamente seleccionados para complementar tu estilo con
+              elegancia, brillo y detalles memorables.
+            </p>
+            <a class="primary-button" href="#catalogo">Ver colección</a>
+          </div>
+
+          <div class="hero-art" aria-label="Imagen destacada de accesorios">
+            <div class="jewelry-scene">
+              <span class="scene-ring scene-ring-large"></span>
+              <span class="scene-ring scene-ring-small"></span>
+              <span class="scene-chain"></span>
+              <span class="scene-pearl pearl-one"></span>
+              <span class="scene-pearl pearl-two"></span>
+              <span class="scene-pearl pearl-three"></span>
+              <span class="scene-flower"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categorías destacadas -->
+      <section class="section categories-section" id="categorias">
+        <div class="section-heading">
+          <p class="eyebrow">Categorías destacadas</p>
+          <h2>Joyas para cada momento</h2>
+        </div>
+        <div class="category-grid" id="categoryGrid"></div>
+      </section>
+
+      <!-- Catálogo de productos -->
+      <section class="section catalog-section" id="catalogo">
+        <div class="catalog-header">
+          <div>
+            <p class="eyebrow">Catálogo</p>
+            <h2 id="catalogTitle">Colección Florencia</h2>
+          </div>
+          <div class="filter-row" id="filterRow" aria-label="Filtrar productos"></div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+      </section>
+
+      <!-- Checkout -->
+      <section class="section checkout-section" id="checkout">
+        <div class="checkout-heading">
+          <p class="eyebrow">Checkout</p>
+          <h2>Finaliza tu compra</h2>
+        </div>
+
+        <form class="checkout-layout" id="checkoutForm">
+          <div class="checkout-form">
+            <fieldset class="form-panel">
+              <legend>Datos personales</legend>
+              <label>
+                Nombre completo
+                <input type="text" name="nombre" placeholder="María Fernanda Pérez" required />
+              </label>
+              <label>
+                Correo
+                <input type="email" name="correo" placeholder="correo@ejemplo.com" required />
+              </label>
+              <label>
+                Teléfono
+                <input type="tel" name="telefono" placeholder="099 123 4567" required />
+              </label>
+            </fieldset>
+
+            <fieldset class="form-panel">
+              <legend>Envío</legend>
+              <label>
+                Ciudad
+                <select name="ciudad" id="citySelect" required></select>
+              </label>
+              <label class="wide-field">
+                Dirección exacta
+                <input
+                  type="text"
+                  name="direccion"
+                  placeholder="Calle, número, referencia"
+                  required
+                />
+              </label>
+            </fieldset>
+
+            <fieldset class="form-panel">
+              <legend>Pago simulado</legend>
+              <div class="payment-options" id="paymentOptions"></div>
+              <div class="card-preview">
+                <label>
+                  Nombre del titular
+                  <input type="text" placeholder="María F. Pérez" />
+                </label>
+                <label>
+                  Número de tarjeta
+                  <input type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" />
+                </label>
+                <div class="split-fields">
+                  <label>
+                    Fecha
+                    <input type="text" placeholder="08/28" />
+                  </label>
+                  <label>
+                    CVV
+                    <input type="text" inputmode="numeric" placeholder="123" />
+                  </label>
+                </div>
+              </div>
+              <p class="payment-note">Este formulario es únicamente visual. No procesa pagos reales.</p>
+            </fieldset>
+          </div>
+
+          <aside class="summary-panel">
+            <h3>Resumen del pedido</h3>
+            <div class="summary-items" id="checkoutItems"></div>
+            <div class="totals-box">
+              <div>
+                <span>Subtotal</span>
+                <strong id="checkoutSubtotal">$0.00</strong>
+              </div>
+              <div>
+                <span>Envío</span>
+                <strong id="checkoutShipping">$0.00</strong>
+              </div>
+              <div class="total-line">
+                <span>Total</span>
+                <strong id="checkoutTotal">$0.00</strong>
+              </div>
+            </div>
+            <button class="primary-button full-button" type="submit">Finalizar compra</button>
+          </aside>
+        </form>
+      </section>
+
+      <!-- Confirmación de compra -->
+      <section class="section confirmation-section hidden" id="confirmacion">
+        <div class="confirmation-card">
+          <div class="confirmation-icon">♡</div>
+          <p class="eyebrow">Pedido confirmado</p>
+          <h2>Gracias por tu compra</h2>
+          <strong>Pedido #FLR-0001</strong>
+          <div class="summary-items" id="confirmationItems"></div>
+          <div class="totals-box">
+            <div>
+              <span>Subtotal</span>
+              <strong id="confirmationSubtotal">$0.00</strong>
+            </div>
+            <div>
+              <span>Envío</span>
+              <strong id="confirmationShipping">$0.00</strong>
+            </div>
+            <div class="total-line">
+              <span>Total pagado</span>
+              <strong id="confirmationTotal">$0.00</strong>
+            </div>
+          </div>
+          <p id="confirmationCity"></p>
+          <p class="payment-note">
+            En una implementación real, aquí se enviaría la información al correo y WhatsApp del
+            negocio.
+          </p>
+          <a class="primary-button" href="#catalogo" id="backToStore">Volver a la tienda</a>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section class="contact-band" id="contacto">
+        <div class="section contact-inner">
+          <div>
+            <p class="eyebrow">Contacto</p>
+            <h2>Florencia en Cuenca</h2>
+            <p>Compra por la web, Instagram o WhatsApp. Enviamos a todo Ecuador.</p>
+          </div>
+          <div class="contact-actions">
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://wa.me/593990000000" target="_blank" rel="noreferrer">WhatsApp</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Carrito lateral -->
+    <div class="cart-overlay" id="cartOverlay" aria-hidden="true">
+      <button class="cart-backdrop" id="cartBackdrop" type="button" aria-label="Cerrar carrito"></button>
+      <aside class="cart-drawer" aria-label="Carrito de compras">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">Carrito</p>
+            <h2>Tu selección</h2>
+          </div>
+          <button class="drawer-close" id="cartClose" type="button" aria-label="Cerrar carrito">×</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="totals-box">
+          <div>
+            <span>Subtotal</span>
+            <strong id="cartSubtotal">$0.00</strong>
+          </div>
+        </div>
+        <a class="primary-button full-button" href="#checkout" id="checkoutButton">Ir al checkout</a>
+      </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="section footer-inner">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Logo Florencia" />
+          <div>
+            <h2>Florencia</h2>
+            <p>Accesorios y joyería de moda.</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://wa.me/593990000000" target="_blank" rel="noreferrer">WhatsApp</a>
+          <span>Cuenca, Ecuador</span>
+          <span>Envíos a todo Ecuador</span>
+        </div>
+        <p class="copyright">© 2026 Florencia. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
